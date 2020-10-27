@@ -10,7 +10,7 @@ import AppReducer from "./AppReducer"
 
 const initialState = {
 
-transaction: [
+transactions: [
 
    {id: 1, description:"Income 1", transactionAmount: 1000},
    {id: 2, description:"Expense 1", transactionAmount: -100},
@@ -30,7 +30,7 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({children}) => {
 
-    const [state, dispatch] = useReducer(AppReducer, initialState)
+    const [state] = useReducer(AppReducer, initialState)
 
 return(
 
@@ -38,7 +38,7 @@ return(
 
         {
 
-            transaction: state.transaction
+            transactions: state.transactions
         }
     }>
         {children}

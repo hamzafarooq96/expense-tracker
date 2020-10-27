@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+
+//Import the Global Context
+import { GlobalContext } from "./GlobalState";
+
+//Import Transaction
+import { Transaction } from "./Transaction";
 
 function AccountTrans(){
+
+
+    const  { transactions } = useContext(GlobalContext);
+
+    
 
     return(
         <>
@@ -9,17 +20,19 @@ function AccountTrans(){
 
         <h3>Transaction History</h3>
         <ul className="list">
-        <li className="plus">
-        Project 1 Income
-        <span>$0.00</span>
-        <button className="delete-btn">X</button>
+        
+        {transactions.map(transaction => (
 
-        </li>
-        <li className="minus">
-            Project 1 Salery
-            <span>-$500</span>
-            <button className="delete-btn">X</button>
-        </li>
+            <Transaction key={transaction.id} transaction={transaction}/> 
+
+        )
+        
+        
+        
+        )} 
+
+        
+       
         </ul>
 
         </div>
